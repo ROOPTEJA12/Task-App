@@ -22,11 +22,11 @@ export const isAuthenticated = () => {
 
 // Auth APIs
 export const signup = (name, email, password, role = 'Member') => {
-  return axios.post(`${API_URL}/auth/signup`, { name, email, password, role });
+  return axios.post(`${API_URL}/api/auth/signup`, { name, email, password, role });
 };
 
 export const login = (email, password) => {
-  return axios.post(`${API_URL}/auth/login`, { email, password });
+  return axios.post(`${API_URL}/api/auth/login`, { email, password });
 };
 
 export const getCurrentUser = () => {
