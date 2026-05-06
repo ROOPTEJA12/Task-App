@@ -1,20 +1,22 @@
 import axios from 'axios';
 
-// Base API URL
+// Backend base URL
 const API_URL =
   import.meta.env.VITE_API_URL ||
-  'http://localhost:5000/api';
+  'http://localhost:5000';
 
-// ================= AUTH TOKEN =================
+// ================= TOKEN HELPERS =================
 
 export const setAuthToken = (token) => {
   if (token) {
     localStorage.setItem('token', token);
+
     axios.defaults.headers.common[
       'Authorization'
     ] = `Bearer ${token}`;
   } else {
     localStorage.removeItem('token');
+
     delete axios.defaults.headers.common[
       'Authorization'
     ];
@@ -37,55 +39,73 @@ export const signup = (
   password,
   role = 'Member'
 ) => {
-  return axios.post(`${API_URL}/auth/signup`, {
-    name,
-    email,
-    password,
-    role,
-  });
+  return axios.post(
+    `${API_URL}/api/auth/signup`,
+    {
+      name,
+      email,
+      password,
+      role,
+    }
+  );
 };
 
 export const login = (email, password) => {
-  return axios.post(`${API_URL}/auth/login`, {
-    email,
-    password,
-  });
+  return axios.post(
+    `${API_URL}/api/auth/login`,
+    {
+      email,
+      password,
+    }
+  );
 };
 
 export const getCurrentUser = () => {
-  return axios.get(`${API_URL}/auth/me`);
+  return axios.get(
+    `${API_URL}/api/auth/me`
+  );
 };
 
 // ================= PROJECT APIs =================
 
 export const getProjects = () => {
-  return axios.get(`${API_URL}/projects`);
+  return axios.get(
+    `${API_URL}/api/projects`
+  );
 };
 
 export const getProjectById = (id) => {
-  return axios.get(`${API_URL}/projects/${id}`);
+  return axios.get(
+    `${API_URL}/api/projects/${id}`
+  );
 };
 
 export const createProject = (
   name,
   description
 ) => {
-  return axios.post(`${API_URL}/projects`, {
-    name,
-    description,
-  });
+  return axios.post(
+    `${API_URL}/api/projects`,
+    {
+      name,
+      description,
+    }
+  );
 };
 
-export const updateProject = (id, data) => {
+export const updateProject = (
+  id,
+  data
+) => {
   return axios.put(
-    `${API_URL}/projects/${id}`,
+    `${API_URL}/api/projects/${id}`,
     data
   );
 };
 
 export const deleteProject = (id) => {
   return axios.delete(
-    `${API_URL}/projects/${id}`
+    `${API_URL}/api/projects/${id}`
   );
 };
 
@@ -94,7 +114,7 @@ export const addProjectMember = (
   memberId
 ) => {
   return axios.post(
-    `${API_URL}/projects/${projectId}/members`,
+    `${API_URL}/api/projects/${projectId}/members`,
     { memberId }
   );
 };
@@ -104,7 +124,7 @@ export const removeProjectMember = (
   memberId
 ) => {
   return axios.delete(
-    `${API_URL}/projects/${projectId}/members`,
+    `${API_URL}/api/projects/${projectId}/members`,
     {
       data: { memberId },
     }
@@ -118,17 +138,22 @@ export const getTasks = (
   status,
   priority
 ) => {
-  return axios.get(`${API_URL}/tasks`, {
-    params: {
-      projectId,
-      status,
-      priority,
-    },
-  });
+  return axios.get(
+    `${API_URL}/api/tasks`,
+    {
+      params: {
+        projectId,
+        status,
+        priority,
+      },
+    }
+  );
 };
 
 export const getTaskById = (id) => {
-  return axios.get(`${API_URL}/tasks/${id}`);
+  return axios.get(
+    `${API_URL}/api/tasks/${id}`
+  );
 };
 
 export const createTask = (
@@ -139,38 +164,44 @@ export const createTask = (
   priority,
   dueDate
 ) => {
-  return axios.post(`${API_URL}/tasks`, {
-    title,
-    description,
-    projectId,
-    assignedTo,
-    priority,
-    dueDate,
-  });
+  return axios.post(
+    `${API_URL}/api/tasks`,
+    {
+      title,
+      description,
+      projectId,
+      assignedTo,
+      priority,
+      dueDate,
+    }
+  );
 };
 
-export const updateTask = (id, data) => {
+export const updateTask = (
+  id,
+  data
+) => {
   return axios.put(
-    `${API_URL}/tasks/${id}`,
+    `${API_URL}/api/tasks/${id}`,
     data
   );
 };
 
 export const deleteTask = (id) => {
   return axios.delete(
-    `${API_URL}/tasks/${id}`
+    `${API_URL}/api/tasks/${id}`
   );
 };
 
 export const getOverdueTasks = () => {
   return axios.get(
-    `${API_URL}/tasks/status/overdue`
+    `${API_URL}/api/tasks/status/overdue`
   );
 };
 
 export const getDashboardStats = () => {
   return axios.get(
-    `${API_URL}/tasks/stats/dashboard`
+    `${API_URL}/api/tasks/stats/dashboard`
   );
 };
 
