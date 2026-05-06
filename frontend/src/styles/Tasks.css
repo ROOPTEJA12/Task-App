@@ -1,0 +1,178 @@
+.tasks-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.tasks-container h1 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.tasks-header {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.create-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+}
+
+.create-btn:hover {
+  background-color: #45a049;
+}
+
+.filter {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  min-width: 150px;
+}
+
+.form {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.submit-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+.submit-btn:hover {
+  background-color: #45a049;
+}
+
+.tasks-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.task-card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #ddd;
+  transition: transform 0.3s;
+}
+
+.task-card.priority-High {
+  border-left-color: #e74c3c;
+  background: #fff5f5;
+}
+
+.task-card.priority-Medium {
+  border-left-color: #f39c12;
+  background: #fffaf0;
+}
+
+.task-card.priority-Low {
+  border-left-color: #4CAF50;
+  background: #f5fff5;
+}
+
+.task-card:hover {
+  transform: translateY(-5px);
+}
+
+.task-card h3 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.task-card p {
+  color: #666;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.task-info {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.priority-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+}
+
+.status-badge.To\ Do {
+  background-color: #95a5a6;
+}
+
+.status-badge.In\ Progress {
+  background-color: #3498db;
+}
+
+.status-badge.Done {
+  background-color: #4CAF50;
+}
+
+.task-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.status-select {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+  color: white;
+  padding: 8px 15px;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}
